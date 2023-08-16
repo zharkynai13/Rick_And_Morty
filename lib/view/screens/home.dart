@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rick_morty/bloc/ch_bloc.dart';
 import 'package:rick_morty/data/constants/const_api.dart';
+import 'package:rick_morty/view/screens/search_scareen.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key, required this.title});
@@ -21,8 +24,12 @@ class MyHomePage extends StatelessWidget {
               fontWeight: FontWeight.bold),
         ),
       ),
-      body: const Column(
-        children: [Text("data")],
+      body: BlocProvider(
+        create: (context) => CharacterBloc(characterRepo: characterApiConst),
+        child: Container(
+          decoration: const BoxDecoration(color: Colors.black12),
+          child: const SearchPage(),
+        ),
       ),
       bottomNavigationBar: Container(
         height: 100,
