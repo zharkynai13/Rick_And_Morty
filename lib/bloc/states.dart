@@ -1,9 +1,9 @@
 part of 'ch_bloc.dart';
 
 @freezed
-class CharacterStates with _$CharacterStates {
-  const factory CharacterStates.loading() = CharacterStatesLoading;
-  const factory CharacterStates.loaded({required Character characterLoaded}) =
+class CharacterState with _$CharacterStates {
+  const factory CharacterState.loading() = CharacterStatesLoading;
+  const factory CharacterState.loaded({required Character characterLoaded}) =
       CharacterStatesLoaded;
-  const factory CharacterStates.error() = CharacterStatesError;
+  const factory CharacterState.error() = CharacterStatesError;
 }

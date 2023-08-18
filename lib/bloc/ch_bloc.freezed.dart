@@ -289,12 +289,12 @@ mixin _$CharacterStates {
 /// @nodoc
 abstract class $CharacterStatesCopyWith<$Res> {
   factory $CharacterStatesCopyWith(
-          CharacterStates value, $Res Function(CharacterStates) then) =
-      _$CharacterStatesCopyWithImpl<$Res, CharacterStates>;
+          CharacterState value, $Res Function(CharacterState) then) =
+      _$CharacterStatesCopyWithImpl<$Res, CharacterState>;
 }
 
 /// @nodoc
-class _$CharacterStatesCopyWithImpl<$Res, $Val extends CharacterStates>
+class _$CharacterStatesCopyWithImpl<$Res, $Val extends CharacterState>
     implements $CharacterStatesCopyWith<$Res> {
   _$CharacterStatesCopyWithImpl(this._value, this._then);
 
@@ -408,7 +408,7 @@ class _$CharacterStatesLoading implements CharacterStatesLoading {
   }
 }
 
-abstract class CharacterStatesLoading implements CharacterStates {
+abstract class CharacterStatesLoading implements CharacterState {
   const factory CharacterStatesLoading() = _$CharacterStatesLoading;
 }
 
@@ -554,7 +554,7 @@ class _$CharacterStatesLoaded implements CharacterStatesLoaded {
   }
 }
 
-abstract class CharacterStatesLoaded implements CharacterStates {
+abstract class CharacterStatesLoaded implements CharacterState {
   const factory CharacterStatesLoaded(
       {required final Character characterLoaded}) = _$CharacterStatesLoaded;
 
@@ -668,6 +668,6 @@ class _$CharacterStatesError implements CharacterStatesError {
   }
 }
 
-abstract class CharacterStatesError implements CharacterStates {
+abstract class CharacterStatesError implements CharacterState {
   const factory CharacterStatesError() = _$CharacterStatesError;
 }

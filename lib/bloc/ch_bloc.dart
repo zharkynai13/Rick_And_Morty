@@ -7,19 +7,19 @@ part 'ch_bloc.freezed.dart';
 part 'events.dart';
 part 'states.dart';
 
-class CharacterBloc extends Bloc<CharacterEvents, CharacterStates> {
+class CharacterBloc extends Bloc<CharacterEvents, CharacterState> {
   final CharacterApiConst characterRepo;
 
   CharacterBloc({required this.characterRepo})
-      : super(const CharacterStates.loading()) {
+      : super(const CharacterState.loading()) {
     on<CharacterEventsFetch>((event, emit) async {
-      emit(const CharacterStates.loading());
+      emit(const CharacterState.loading());
       try {
         Character _characterLoaded =
             await characterRepo.getCharacter(event.page, event.name);
-        emit(CharacterStates.loaded(characterLoaded: _characterLoaded));
+        emit(CharacterState.loaded(characterLoaded: _characterLoaded));
       } catch (e) {
-        emit(const CharacterStates.error());
+        emit(const CharacterState.error());
       }
     });
   }

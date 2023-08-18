@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_morty/bloc/ch_bloc.dart';
 import 'package:rick_morty/data/constants/const_api.dart';
+import 'package:rick_morty/data/models/episode.dart';
+import 'package:rick_morty/view/screens/favorite.dart';
 import 'package:rick_morty/view/screens/search_scareen.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -14,7 +16,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final characterApiConst = CharacterApiConst();
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -38,14 +39,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         elevation: 0,
       ),
-      body: BlocProvider(
-        create: (context) => CharacterBloc(characterRepo: characterApiConst),
-        child: Container(
-          decoration:
-              const BoxDecoration(color: Color.fromARGB(31, 22, 120, 240)),
-          child: const SearchPage(),
-        ),
-      ),
+      body: Builder(builder: (_) {
+        if (_selectedIndex == 0) {
+          return const SearchPage();
+        } else if (_selectedIndex == 1) {
+          return const FavoritePage();
+        }
+        return const SizedBox();
+      }),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
