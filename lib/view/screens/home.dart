@@ -5,7 +5,7 @@ import 'package:rick_morty/data/constants/const_api.dart';
 import 'package:rick_morty/view/screens/search_scareen.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({super.key, required this.title});
+  const MyHomePage({super.key, required this.title});
 
   final String title;
 
@@ -19,7 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      _selectedIndex = 0;
     });
   }
 
@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Color.fromARGB(255, 49, 148, 241),
         onTap: _onItemTapped,
       ),
     );

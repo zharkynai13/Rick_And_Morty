@@ -19,6 +19,7 @@ class _SearchPageState extends State<SearchPage> {
   int _currentPage = 1;
   String _currentSearchStr = "";
   final RefreshController refreshController = RefreshController();
+  final ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
@@ -87,6 +88,7 @@ class _SearchPageState extends State<SearchPage> {
               loaded: (characterLoaded) {
                 _currentCharacter = characterLoaded;
                 _currentResults.addAll(_currentCharacter.results);
+
                 refreshController.loadComplete();
                 return getCharacters(_currentResults);
               },

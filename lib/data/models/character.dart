@@ -25,16 +25,19 @@ class Info with _$Info {
 
 @freezed
 class Results with _$Results {
-  const factory Results(
-      {required int id,
-      required String name,
-      required String status,
-      required String species,
-      required String type,
-      required String gender,
-      required String image,
-      required List<String> episode,
-      required DateTime created}) = _Results;
+  const factory Results({
+    required int id,
+    required String name,
+    required String status,
+    required String species,
+    required String type,
+    required String gender,
+    required String image,
+    required List<String> episode,
+    required DateTime created,
+  }) = _Results;
   factory Results.fromJson(Map<String, dynamic> json) =>
       _$ResultsFromJson(json);
+
+  void toggleFavorite() {}
 }

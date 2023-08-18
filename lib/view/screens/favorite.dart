@@ -5,19 +5,9 @@ class FavoritePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> favoriteItems = ['Item 1', 'Item 2', 'Item 3'];
-
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Избранное'),
-      ),
-      body: ListView.builder(
-        itemCount: favoriteItems.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(favoriteItems[index]),
-          );
-        },
+      body: Container(
+        child: Text("data"),
       ),
     );
   }

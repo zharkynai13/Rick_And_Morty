@@ -13,11 +13,6 @@ class CustomListTile extends StatelessWidget {
     required this.result,
   }) : super(key: key);
   final Results result;
-  bool isFavorite = false;
-
-  void toggleFavorite() {
-    isFavorite = !isFavorite;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +75,7 @@ class CustomListTile extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Column(
@@ -119,17 +114,15 @@ class CustomListTile extends StatelessWidget {
                               )
                             ],
                           ),
-                          IconButton(
-                            onPressed: () {
-                              // onFavoriteToggle(); //
-                              // result
-                              //     .toggleFavorite();
-                            },
-                            icon: Icon(
-                              isFavorite ? Icons.star : Icons.star_border,
-                              color: isFavorite ? Colors.yellow : Colors.grey,
-                            ),
-                          ),
+                          // IconButton(
+                          //   onPressed: () {
+                          //     print("click");
+                          //   },
+                          //   icon: Icon(
+                          //     isFavorite ? Icons.star : Icons.star_border,
+                          //     color: isFavorite ? Colors.yellow : Colors.grey,
+                          //   ),
+                          // ),
                         ],
                       ),
                     )

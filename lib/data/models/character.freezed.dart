@@ -630,6 +630,11 @@ class _$_Results implements _Results {
       this,
     );
   }
+
+  @override
+  void toggleFavorite() {
+    // TODO: implement toggleFavorite
+  }
 }
 
 abstract class _Results implements Results {
