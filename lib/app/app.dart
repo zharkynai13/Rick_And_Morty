@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rick_morty/view/screens/favorite.dart';
 
 import '../view/screens/home.dart';
 
@@ -19,6 +20,9 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(
         title: 'Главная',
       ),
+      routes: {
+        '/favorite': (context) => FavoritePage(),
+      },
     );
   }
 }

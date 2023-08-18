@@ -4,48 +4,66 @@ import 'package:rick_morty/bloc/ch_bloc.dart';
 import 'package:rick_morty/data/constants/const_api.dart';
 import 'package:rick_morty/view/screens/search_scareen.dart';
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   MyHomePage({super.key, required this.title});
 
   final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   final characterApiConst = CharacterApiConst();
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        elevation: 0,
-        title: const Text(
-          "Rick And Morty",
-          style: TextStyle(
-              fontSize: 24,
-              fontFamily: AutofillHints.addressCity,
-              fontWeight: FontWeight.bold),
+        flexibleSpace: Padding(
+          padding: const EdgeInsets.only(top: 40),
+          child: Container(
+            height: 100,
+            decoration: const BoxDecoration(
+              image: DecorationImage(image: AssetImage("assets/rrr.png")),
+            ),
+          ),
         ),
+        elevation: 0,
       ),
       body: BlocProvider(
         create: (context) => CharacterBloc(characterRepo: characterApiConst),
         child: Container(
-          decoration: const BoxDecoration(color: Colors.black12),
+          decoration:
+              const BoxDecoration(color: Color.fromARGB(31, 22, 120, 240)),
           child: const SearchPage(),
         ),
       ),
-      bottomNavigationBar: Container(
-        height: 100,
-        child: const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Icon(
-              Icons.home,
-              size: 40,
-            ),
-            Icon(
-              Icons.favorite,
-              size: 40,
-            )
-          ],
-        ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favorite',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'Episode',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.blue,
+        onTap: _onItemTapped,
       ),
     );
   }

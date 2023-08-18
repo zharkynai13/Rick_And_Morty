@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:rick_morty/bloc/ch_bloc.dart';
 import 'package:rick_morty/data/models/character.dart';
-import 'package:rick_morty/view/widgets/custom_list_tile.dart';
+import 'package:rick_morty/view/widgets/list_view.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -69,6 +69,7 @@ class _SearchPageState extends State<SearchPage> {
         Expanded(
             child: SmartRefresher(
           enablePullUp: true,
+          enablePullDown: false,
           controller: refreshController,
           onLoading: () {
             _currentPage++;
@@ -76,10 +77,8 @@ class _SearchPageState extends State<SearchPage> {
               context.read<CharacterBloc>().add(CharacterEvents.fetch(
                   name: _currentSearchStr, page: _currentPage));
             } else {
-              print("refresh controller cancel");
               refreshController.loadNoData();
             }
-            refreshController.loadComplete();
           },
           child: state.when(
               loading: () {
@@ -88,28 +87,12 @@ class _SearchPageState extends State<SearchPage> {
               loaded: (characterLoaded) {
                 _currentCharacter = characterLoaded;
                 _currentResults.addAll(_currentCharacter.results);
+                refreshController.loadComplete();
                 return getCharacters(_currentResults);
               },
               error: () => const Text("Nothing found......")),
         ))
       ],
-    );
-  }
-
-  Widget getCharacters(List<Results> currentResults) {
-    return ListView.separated(
-      itemCount: currentResults.length,
-      separatorBuilder: (_, index) => const SizedBox(
-        height: 5,
-      ),
-      shrinkWrap: true,
-      itemBuilder: (BuildContext context, int index) {
-        final result = currentResults[index];
-        return Padding(
-            padding:
-                const EdgeInsets.only(left: 16, right: 16, top: 3, bottom: 3),
-            child: CustomListTile(result: result));
-      },
     );
   }
 }
