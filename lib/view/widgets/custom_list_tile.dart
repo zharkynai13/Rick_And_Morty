@@ -114,15 +114,6 @@ class CustomListTile extends StatelessWidget {
                               )
                             ],
                           ),
-                          // IconButton(
-                          //   onPressed: () {
-                          //     print("click");
-                          //   },
-                          //   icon: Icon(
-                          //     isFavorite ? Icons.star : Icons.star_border,
-                          //     color: isFavorite ? Colors.yellow : Colors.grey,
-                          //   ),
-                          // ),
                         ],
                       ),
                     )
